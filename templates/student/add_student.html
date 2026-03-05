@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Student</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 min-h-screen flex items-center justify-center p-6">
+
+  <!-- Add Student Card -->
+  <div class="bg-white w-full max-w-md p-8 rounded-2xl shadow-lg">
+    
+    <h1 class="text-2xl font-bold text-gray-800 mb-6 text-center">
+      Add New Student
+    </h1>
+
+    <!-- Form -->
+    <form method="POST" class="space-y-4">
+      {% csrf_token %}
+
+      <!-- Name -->
+      <div>
+        <label class="block text-gray-700 font-medium mb-1">
+          Student Name
+        </label>
+        <input 
+          type="text"
+          name="input_name" 
+          placeholder="Enter full name"
+          class="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        >
+      </div>
+
+      <!-- Email -->
+      <div>
+        <label class="block text-gray-700 font-medium mb-1">
+          Email Address
+        </label>
+        <input 
+          type="email" 
+          name="input_email"
+          placeholder="Enter email"
+          class="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        >
+      </div>
+
+      <!-- Phone -->
+      <div>
+        <label class="block text-gray-700 font-medium mb-1">
+          Phone Number
+        </label>
+        <input 
+          type="tel"
+          name="input_phone_number" 
+          placeholder="Enter phone number"
+          class="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        >
+      </div>
+
+      <!-- Buttons -->
+      <div class="flex justify-between pt-4">
+        <a href="index.html" 
+           class="bg-gray-400 text-white px-5 py-2 rounded-lg hover:bg-gray-500 transition">
+          Cancel
+        </a>
+
+        <button 
+          type="submit"
+          class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition">
+          Save Student
+        </button>
+      </div>
+
+    </form>
+
+  </div>
+
+</body>
+</html>
