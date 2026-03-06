@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from .models import Student
 # Create your views here.
 def student(request):
@@ -22,5 +22,6 @@ def add_student(request):
             phone_number=student_phone_number
         )
 
+        return redirect ('student')
 
     return render(request,"student/add_student.html")
