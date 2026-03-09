@@ -25,3 +25,20 @@ def add_student(request):
         return redirect ('student')
 
     return render(request,"student/add_student.html")
+def delete_student(request,student_id):
+    my_student=Student.objects.get(id=student_id)
+    my_student.delete()
+    return redirect("student")
+def update_student(request,student_id):
+    student=Student.objects.get(id=student_id)
+    if request.method=="POST":
+        student.name=request.POST.get("name")
+        student.email=request.POST.get("email")
+        student.phone_number=request.POST.get("phone_number")
+        
+        student.save()
+        return redirect("student") 
+    parameter={
+        "student":student
+    }
+    return render(request,"student/update_student.html",parameter)
