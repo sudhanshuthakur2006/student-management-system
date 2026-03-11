@@ -17,22 +17,41 @@
 
   <!-- Student Cards Grid -->
   <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
-      {% for student in student_data %}
-        <div class="bg-white p-6 rounded-2xl shadow hover:shadow-lg transition gap-4">
-          <h2 class="text-xl font-semibold mb-2">{{ student.name }}</h2>
-          <p class="text-gray-600">Email: {{ student.email }}</p>
-          <p class="text-gray-600 mb-4">Phone Number:+91 {{ student.phone_number }}</p>
+  {% for student in student_data %}
+    <div class="bg-white p-6 rounded-2xl shadow hover:shadow-lg transition">
 
-          <div class="flex gap-2">
-            <a href="{% url 'update_student' student.id %}" class="flex-1 bg-yellow-500 text-white px-8 py-2 rounded-lg hover:bg-yellow-600 transition">
-              Update
-            </a>
-            <a href="{% url 'delete_student' student.id %}" class="flex-1 bg-red-500 text-white px-8 py-2 rounded-lg hover:bg-red-600 transition">
-              Delete
-            </a>
-          </div>
+      <!-- Student Image -->
+      <div class="flex items-center gap-4 mb-3">
+        {% if student.img %}
+          <img src="{{ student.img.url }}"
+              class="w-16 h-16 rounded-full object-cover border">
+        {% else %}
+          <img src="https://ui-avatars.com/api/?name={{ student.name }}"
+              class="w-16 h-16 rounded-full object-cover border">
+        {% endif %}
+
+        <div>
+          <h2 class="text-xl font-semibold">{{ student.name }}</h2>
+          <p class="text-gray-600 text-sm">Email: {{ student.email }}</p>
         </div>
-      {% endfor %}
+      </div>
+
+      <p class="text-gray-600 mb-4">Phone Number: +91 {{ student.phone_number }}</p>
+
+      <div class="flex gap-2">
+        <a href="{% url 'update_student' student.id %}" 
+           class="flex-1 text-center bg-yellow-500 text-white px-4 py-2 rounded-lg hover:bg-yellow-600 transition">
+          Update
+        </a>
+
+        <a href="{% url 'delete_student' student.id %}" 
+           class="flex-1 text-center bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition">
+          Delete
+        </a>
+      </div>
+
     </div>
+  {% endfor %}
+</div>
 </body>
 </html>

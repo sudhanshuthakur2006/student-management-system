@@ -15,11 +15,12 @@ def add_student(request):
         student_name=request.POST.get("input_name")
         student_email=request.POST.get("input_email")
         student_phone_number=request.POST.get("input_phone_number")
-
+        student_image=request.FILES.get("input_img")
         Student.objects.create(
             name=student_name,
             email=student_email,
-            phone_number=student_phone_number
+            phone_number=student_phone_number,
+            img=student_image
         )
 
         return redirect ('student')
@@ -35,7 +36,8 @@ def update_student(request,student_id):
         student.name=request.POST.get("name")
         student.email=request.POST.get("email")
         student.phone_number=request.POST.get("phone_number")
-        
+        if request.FILES.get('img'):
+            student.img = request.FILES.get('img')
         student.save()
         return redirect("student") 
     parameter={
